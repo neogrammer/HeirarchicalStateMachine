@@ -2,6 +2,12 @@
 #include "Controlled.h"
 #include "Scripted.h"
 
+Input::Input()
+	: inputSource{ nullptr }
+{
+
+}
+
 Input::Input(input::SourceType type_)
 	: inputSource{nullptr}
 {

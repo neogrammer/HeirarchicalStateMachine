@@ -10,6 +10,7 @@ class Input
 protected:
 	std::unique_ptr<InputSource> inputSource;
 public:
+	Input();
 	Input(input::SourceType type_);
 	~Input();
 

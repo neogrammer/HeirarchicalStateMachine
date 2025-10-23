@@ -2,7 +2,11 @@
 #include "Core.h"
 class PlayerCore : public Core
 {
+
 public:
-	using Core::Core;
+	PlayerCore();
+	PlayerCore(sf::Texture& tex_);
 	~PlayerCore();
+
+	void AssignAnimations(sf::Texture& tex_);
 };

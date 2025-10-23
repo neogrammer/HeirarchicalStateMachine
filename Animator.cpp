@@ -25,6 +25,11 @@ void Animator::update()
 	animMap[currAnim]->animate();
 }
 
+sf::Texture& Animator::getTexture()
+{
+	return *animMap[currAnim]->textureSheet;
+}
+
 void Animator::setFallbackName(const std::string& animName_, const std::string& fallbackName_)
 {
 	if (animMap.find(animName_) == animMap.end())

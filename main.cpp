@@ -5,10 +5,11 @@
 #include "Animation.h"
 #include "Animator.h"
 
+#include "Player.h"
+
 sf::RenderWindow wnd{ sf::VideoMode{{1920, 1080}, 32U}, "Heirarchical Animation State Machine" };
 
 sf::Texture playerTex;
-sf::Sprite* sprite;
 
 using namespace util;
 
@@ -18,16 +19,8 @@ int main()
 	{
 		// oh well
 	}
-	sprite = new sf::Sprite{ playerTex };
-	sprite->setTextureRect({ {0,160}, {130,160} });
-	sprite->setOrigin(CenterSprite(sprite));
-	sprite->setPosition(CenterScreen(wnd));
 
-
-	Animator animator{};
-	animator.addAnimation(playerTex, "Idle", 3, { 130,160 }, { 0,160 }, .6f, true, 2.f);
-	animator.addAnimation(playerTex, "Running", 10, { 130,160 }, { 130 * 2,160 * 2 }, 0.07f, false, 0.f, "Idle");
-	animator.setAnimation("Running");
+	Player player{ playerTex };
 
 	while (wnd.isOpen())
 	{
@@ -50,19 +43,18 @@ int main()
 		// velocities for the checks and then the entities are put in the right position for the frame
 
 		//update the animator to get the right animation frame then set the texture rect for the sprite so that the correct frame is drawn
-		animator.update();
-		sprite->setTextureRect(animator.frame());
+
+		player.update(0.016f);
 
 		// move the view to keep player in the middle 1/3rd of the screen if needed,, set this view back to the window, then clear draw and display 
 
 		wnd.clear(sf::Color(sf::Color::White));
 
-		wnd.draw(*sprite);
+
+		player.render(wnd);
 
 		wnd.display();
 	}
-
-	delete sprite;
 
 	return 0;
 }

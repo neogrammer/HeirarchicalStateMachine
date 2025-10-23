@@ -1,8 +1,14 @@
 #include "Body.h"
 
-Body::Body(sf::Vector2f pos_, sf::Vector2f size_, bool affectedByGravity_, float gravity_, sf::Vector2f vel_, sf::Vector2f accel_)
+Body::Body()
+{
+
+}
+
+Body::Body(sf::Vector2f pos_, sf::Vector2f size_,sf::Vector2i texOff_, bool affectedByGravity_, float gravity_, sf::Vector2f vel_, sf::Vector2f accel_)
 	: pos{ pos_ }
 	, size{ size_ }
+	, texOff{ texOff_ }
 	, affectedByGravity{ affectedByGravity_ }
 	, gravity{ gravity_ }
 	, vel{ vel_ }
@@ -17,7 +23,7 @@ Body::Body(sf::Vector2f pos_, sf::Vector2f size_, bool affectedByGravity_, float
 
 float Body::top()
 {
- return pos.y - size.y / 2.f;
+   return pos.y - size.y / 2.f;
 }
 
 float Body::left()
@@ -37,22 +43,22 @@ float Body::right()
 
 sf::Vector2f Body::topLeft()
 {
-	return { top(),left() };
+	return { left(), top()};
 }
 
 sf::Vector2f Body::topRight()
 {
-	return { top(),right() };
+	return { right(), top() };
 }
 
 sf::Vector2f Body::bottomLeft()
 {
-	return {bottom(),left()};
+	return {left(), bottom()};
 }
 
 sf::Vector2f Body::bottomRight()
 {
-	return { bottom(),right() };
+	return { right(), bottom() };
 }
 
 float Body::prevTop()

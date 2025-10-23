@@ -18,8 +18,10 @@ struct Body
 	sf::Vector2f prevAccel;
 	float		 dt;
 	float		 prevDT;
+	sf::Vector2i texOff;
 
-	Body(sf::Vector2f pos_, sf::Vector2f size_, bool affectedByGravity_ = true, float gravity_ = 400.f, sf::Vector2f vel_ = { 0.f,0.f }, sf::Vector2f accel_ = { 0.f,0.f });
+	Body();
+	Body(sf::Vector2f pos_, sf::Vector2f size_, sf::Vector2i texOff_ = {0,0}, bool affectedByGravity_ = true, float gravity_ = 400.f, sf::Vector2f vel_ = {0.f,0.f}, sf::Vector2f accel_ = {0.f,0.f});
 	~Body() = default;
 
 	float top();
