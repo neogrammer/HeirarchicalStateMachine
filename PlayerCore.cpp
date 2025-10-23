@@ -11,7 +11,7 @@ PlayerCore::PlayerCore(sf::Texture& tex_)
 	animator = std::make_unique<Animator>();
 	AssignAnimations(tex_);
 	input = std::make_unique<Input>(input::SourceType::Controlled);
-	body = std::make_unique<Body>(sf::Vector2f{ 960.f,540.f },sf::Vector2f{130.f,160.f});
+	body = std::make_unique<Body>(sf::Vector2f{ 960.f,540.f }, sf::Vector2f{ 130.f,160.f }, sf::Vector2i{ 0,0 }, false);
 }
 
 PlayerCore::~PlayerCore() {}

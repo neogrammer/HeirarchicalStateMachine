@@ -161,8 +161,12 @@ void Body::update(float dt_)
 	prevDT = dt;
 	dt = dt_;
 
-
+	if (affectedByGravity)
+	{
+		accel.y += gravity;
+	}
 	updateVel();
+
 	if (affectedByGravity && vel.x > 0.f && fabsf(vel.y) < 0.001f)
 	{
 		applyFriction();
@@ -176,6 +180,8 @@ void Body::updateVel()
 {
 	prevVel = vel;
 	vel += accel * dt;
+	// we just updated for the frame, so now any acceleration adding accumulates for next frame.  with no force pushing on entity acceleration force is zero, must constantly apply force to accelerate
+	accel = { 0.f,0.f };
 }
 
 void Body::impulse(sf::Vector2f vel_, bool updatePrev_)
