@@ -1,2 +1,5 @@
 #pragma once
-class InputSource {};
+class InputSource {
+public:
+	virtual ~InputSource() = 0;
+};

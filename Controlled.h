@@ -1,4 +1,11 @@
 #pragma once
+#include "InputSource.h"
 
-class Controlled
-{ };
+class Controlled : public InputSource
+{
+public:
+	using InputSource::InputSource;
+
+	~Controlled();
+
+};

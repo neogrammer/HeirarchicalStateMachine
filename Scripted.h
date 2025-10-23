@@ -1,2 +1,11 @@
 #pragma once
-class Scripted {};
+#include "InputSource.h"
+
+class Scripted : public InputSource
+{
+public:
+	using InputSource::InputSource;
+
+	~Scripted();
+
+};

@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="Body.cpp" />
     <ClCompile Include="Controlled.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="FSM\FSMEvent.cpp" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
+    <ClInclude Include="Body.h" />
     <ClInclude Include="Controlled.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="FSM\AnimStates.h" />
@@ -163,6 +165,7 @@
     <ClInclude Include="FSM\PlayerAnimFSM.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputSource.h" />
+    <ClInclude Include="InputSourceTypes.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerCore.h" />
