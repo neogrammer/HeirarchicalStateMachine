@@ -22,7 +22,6 @@ struct DyingState {};
 struct DeadState {};
 struct HitState {};
 
-
 using PlayerAnimVar = std::variant<IdleState, StartedMovingState, DeadState, MovingState, StartedMovingAndShootingState, ShootingState, MovingAndShootingState, JumpingState, FallingState, LandingState, JumpingAndShootingState, FallingAndShootingState, LandingAndShootingState, DyingState, HitState>;
 
 enum class StateEnum {
@@ -70,7 +69,7 @@ static const std::string_view toString(StateEnum s)
 	return "None"; // fallback
 }
 
-static StateEnum strToEvt(const std::string& evtStr_)
+static StateEnum strToState(const std::string& evtStr_)
 {
 	static const std::unordered_map<std::string, StateEnum> stateMap = {
 		{"Idle", StateEnum::Idle},

@@ -115,5 +115,113 @@
     <Image Include="assets\PlayerAtlas.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\mmraw\6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\12-129172_megaman-x4-enemy-sprites-hd-png-download.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\381-3817771_enemies-megaman-enemy-sprite-sheet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\bbabdae82710f75aaccac13d6fcbd8ff.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\d1meywg-f0d29f9f-1088-40cf-b692-4bcc6e2f3011.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\eighth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\fifth-tenth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\first.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\firstHeld.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\fourth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mega_man_nes_sprite_sheet_by_dragondeplatino_d87jouv-fullview.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXEnnemies.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet1.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet6.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet7.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet9.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet11.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet13.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MegaManXSheet17.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mega-man-x-sprite-sheet-88x5z7tuf6a0edkp-88x5z7tuf6a0edkp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mmm-mmx6dnadude.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mmm-mmxarmour.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\MMX_Best.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mmx_iOS_enemies1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mmx2_croakhopper.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\mmx4__king_poseidon.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\napalmpbsheet.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\newSpriteShee.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\ninth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\secondNocharge.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\seventh.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\sixth.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\third.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\thirdCharge.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\thirdNoCharge.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\mmraw\zerox4sheet.gif">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
