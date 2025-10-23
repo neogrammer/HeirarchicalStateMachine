@@ -1,17 +1,13 @@
 #include "PlayerCore.h"
-
+#include "Cfg.h"
 
 
 PlayerCore::PlayerCore()
 {
-}
-
-PlayerCore::PlayerCore(sf::Texture& tex_)
-{
 	animator = std::make_unique<Animator>();
-	AssignAnimations(tex_);
+	AssignAnimations(Cfg::textures.get(Cfg::Textures::PlayerAtlas));
 	input = std::make_unique<Input>(input::SourceType::Controlled);
-	body = std::make_unique<Body>(sf::Vector2f{ 960.f,540.f }, sf::Vector2f{ 130.f,160.f }, sf::Vector2i{ 0,0 }, false);
+	body = std::make_unique<Body>(sf::Vector2f{ 800.f,450.f }, sf::Vector2f{ 130.f,160.f }, sf::Vector2i{ 0,0 }, false);
 }
 
 PlayerCore::~PlayerCore() {}

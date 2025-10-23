@@ -6,8 +6,8 @@
 class Player : public Obj
 {
 public:
+
 	Player();
-	Player(sf::Texture& tex_);
 	~Player();
 
 	void input();

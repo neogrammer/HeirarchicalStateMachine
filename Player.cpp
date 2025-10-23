@@ -1,13 +1,9 @@
 #include "Player.h"
 #include "PlayerCore.h"
+
 Player::Player()
 {
-
-}
-
-Player::Player(sf::Texture& tex_)
-{
-	core = std::make_unique<PlayerCore>(tex_);
+	core = std::make_unique<PlayerCore>();
 
 }
 

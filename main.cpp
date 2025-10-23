@@ -6,21 +6,18 @@
 #include "Animator.h"
 
 #include "Player.h"
+#include "Cfg.h"
 
-sf::RenderWindow wnd{ sf::VideoMode{{1920, 1080}, 32U}, "Heirarchical Animation State Machine" };
+sf::RenderWindow wnd{ sf::VideoMode{{1600, 900}, 32U}, "Heirarchical Animation State Machine" };
 
-sf::Texture playerTex;
 
 using namespace util;
 
 int main()
 {
-	if (!playerTex.loadFromFile("assets/PlayerAtlas.png"))
-	{
-		// oh well
-	}
-
-	Player player{ playerTex };
+	
+	Cfg::Initialize();
+	Player player{ };
 
 	while (wnd.isOpen())
 	{
