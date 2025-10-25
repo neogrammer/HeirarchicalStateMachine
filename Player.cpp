@@ -24,10 +24,30 @@ void Player::update(float dt_)
 {
 	core->body->update(dt_);
 
+	if ((isLeftKeyPressed() || isLeftKeyHeld()) && !core->input->isRightHeld())
+	{
+		core->animator->setAnimation("Running_Left");
+	}
+	else if (isLeftKeyReleased())
+	{
+		core->animator->setAnimation("Idle_Left");
+	}
+
+	if ((isRightKeyPressed() || isRightKeyHeld()) && !core->input->isLeftHeld())
+	{
+		core->animator->setAnimation("Running_Right");
+	}
+	else if (isRightKeyReleased())
+	{
+		core->animator->setAnimation("Idle_Right");
+	}
+
 	// collisions can happen in caller after this before drawing
 }
 void Player::render(sf::RenderWindow& wnd)
 {
+	
+
 	// in final positions for this frame, lets update to correct animation and render
 	core->animator->update();
 

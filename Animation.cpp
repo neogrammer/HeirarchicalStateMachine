@@ -84,7 +84,7 @@ void Animation::nextFrame()
 			else
 			{
 				donePlaying = true;
-				stop();
+				pause();
 			}
 		}
 	}
@@ -111,6 +111,7 @@ void Animation::pause()
 
 void Animation::stop()
 {
+	index = 0;
 	playing = false;
 	totalTimer.reset();
 	frameTimer.reset();

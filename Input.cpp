@@ -1,7 +1,7 @@
 #include "Input.h"
 #include "Controlled.h"
 #include "Scripted.h"
-
+#include <iostream>
 Input::Input()
 	: inputSource{ nullptr }
 {

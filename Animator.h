@@ -29,5 +29,7 @@ public:
 	sf::Texture& getTexture();
 
 	void setFallbackName(const std::string& animName, const std::string& fallbackName);
+	const std::string& getCurrAnimName();
+	const std::string& getCurrFallbackName();
 
 };

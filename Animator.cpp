@@ -53,12 +53,23 @@ void Animator::setFallbackName(const std::string& animName_, const std::string& 
 		fallbackAnim = animMap[animName_]->fallbackName;
 }
 
+const std::string& Animator::getCurrAnimName()
+{
+	return animMap[currAnim]->name;
+	//return currAnim;
+}
+
+const std::string& Animator::getCurrFallbackName()
+{
+	return animMap[currAnim]->fallbackName;
+}
+
 void Animator::addAnimation(sf::Texture& textureSheet_, const std::string& name_, uint16_t numFrames_, sf::Vector2i frameSize_, sf::Vector2i startPxl_, float frameDelay_, bool loop_, float loopDelay_, const std::string& fallbackAnim_)
 {
 	animMap.insert_or_assign(name_, std::make_unique<Animation>(textureSheet_, name_, numFrames_, frameSize_, startPxl_, frameDelay_, loop_, loopDelay_, fallbackAnim_));
 	if (currAnim == "")
 	{
-		currAnim = animMap[name_]->name;
+		currAnim = name_;
 	}
 	if (fallbackAnim == "")
 	{
@@ -75,8 +86,15 @@ bool Animator::setAnimation(const std::string& name_)
 		return false;
 	}
 
-	currAnim = name_;
-	fallbackAnim = animMap[currAnim]->fallbackName;
+	if (currAnim != name_)
+	{
+		animMap[currAnim]->donePlaying = false;
+		animMap[currAnim]->stop();
+		currAnim = name_;
+		fallbackAnim = animMap[currAnim]->fallbackName;
+		animMap[currAnim]->donePlaying = false;
+		animMap[currAnim]->play();
+	}
 	return true;
 }
 
