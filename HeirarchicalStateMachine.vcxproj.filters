@@ -119,6 +119,9 @@
     <ClInclude Include="ResourceMgr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameKeyEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\PlayerAtlas.png">

@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "PlayerCore.h"
-
+#include <iostream>
 Player::Player()
 {
 	core = std::make_unique<PlayerCore>();
@@ -14,11 +14,16 @@ Player::~Player()
 
 void Player::input()
 {
+	// must call in this order! one updates the actual device input state core->input->updateState() only knows if key is currently pressed, 
+	//  then the keys read by object updates complete state over time, updateKeyState() allows you to know if isLeftPressed() or isLeftHeld()
+	core->input->updateState();
+	updateKeyState();
+
 }
 void Player::update(float dt_)
 {
 	core->body->update(dt_);
-	
+
 	// collisions can happen in caller after this before drawing
 }
 void Player::render(sf::RenderWindow& wnd)
@@ -34,3 +39,4 @@ void Player::render(sf::RenderWindow& wnd)
 
 	wnd.draw(sprite);
 }
+

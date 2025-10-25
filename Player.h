@@ -5,6 +5,11 @@
 #include <memory>
 class Player : public Obj
 {
+
+	const float runSpeed{ 350.f };
+
+
+
 public:
 
 	Player();

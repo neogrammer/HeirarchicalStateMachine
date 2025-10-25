@@ -3,9 +3,16 @@
 
 class Scripted : public InputSource
 {
+	// Fn::activeBehavior
 public:
-	using InputSource::InputSource;
+	
+	Scripted();
+	Scripted(std::array<bool, (size_t)(int(io::Key::Count))>* keys_);
 
 	~Scripted();
+
+	void update() override;
+
+	// setBehavior(Fn::Behavior)
 
 };

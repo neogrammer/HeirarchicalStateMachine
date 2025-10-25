@@ -164,6 +164,7 @@
     <ClInclude Include="FSM\Events.h" />
     <ClInclude Include="FSM\FSM.h" />
     <ClInclude Include="FSM\PlayerAnimFSM.h" />
+    <ClInclude Include="GameKeyEnum.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputSource.h" />
     <ClInclude Include="InputSourceTypes.h" />

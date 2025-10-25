@@ -34,6 +34,8 @@ int main()
 			}
 		}
 
+		player.input();
+
 		// player updates keys pressed, and all inputs are passed to other Objs,
 		// then all Objs, without then with cores, are updated, then after that only velocity is updated, 
 		// not positions. here is where collision occurs for all using future position using the current 
