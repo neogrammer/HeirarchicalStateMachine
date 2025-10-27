@@ -176,6 +176,7 @@
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\MMAtlas.png" />
     <Image Include="assets\mmraw\12-129172_megaman-x4-enemy-sprites-hd-png-download.png" />
     <Image Include="assets\mmraw\381-3817771_enemies-megaman-enemy-sprite-sheet.png" />
     <Image Include="assets\mmraw\6.png" />

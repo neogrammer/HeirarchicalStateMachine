@@ -235,5 +235,8 @@
     <Image Include="assets\mmraw\zerox4sheet.gif">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\MMAtlas.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
