@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\AnimStateMachine">
+      <UniqueIdentifier>{db81b4fd-2323-42b9-bb07-df1f34269cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AnimStateMachine\StateSource">
+      <UniqueIdentifier>{0b4a9c85-f7bd-4fa6-9d71-72648995d496}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,6 +65,30 @@
     </ClCompile>
     <ClCompile Include="Cfg.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\AnimState.cpp">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\AnimMachine..cpp">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\DeadState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\HitState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\IdleState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\RunningState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\all_anim_states.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\AnimLambdas.cpp">
+      <Filter>Header Files\AnimStateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +151,24 @@
     </ClInclude>
     <ClInclude Include="GameKeyEnum.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimStateMachine\AnimState.h">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimStateMachine\AnimMachine.h">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimStateMachine\anim_machine_helpers.h">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimStateMachine\all_anim_states.h">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="all_object_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimStateMachine\AnimLambdas.h">
+      <Filter>Header Files\AnimStateMachine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

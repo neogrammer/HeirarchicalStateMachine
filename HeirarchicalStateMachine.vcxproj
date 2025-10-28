@@ -133,12 +133,20 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
+    <ClCompile Include="AnimStateMachine\all_anim_states.cpp" />
+    <ClCompile Include="AnimStateMachine\AnimLambdas.cpp" />
+    <ClCompile Include="AnimStateMachine\AnimMachine..cpp" />
+    <ClCompile Include="AnimStateMachine\AnimState.cpp" />
+    <ClCompile Include="AnimStateMachine\StateSource\DeadState.cpp" />
+    <ClCompile Include="AnimStateMachine\StateSource\HitState.cpp" />
+    <ClCompile Include="AnimStateMachine\StateSource\IdleState.cpp" />
+    <ClCompile Include="AnimStateMachine\StateSource\RunningState.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="Cfg.cpp" />
     <ClCompile Include="Controlled.cpp" />
@@ -154,8 +162,14 @@
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="all_object_types.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
+    <ClInclude Include="AnimStateMachine\all_anim_states.h" />
+    <ClInclude Include="AnimStateMachine\AnimLambdas.h" />
+    <ClInclude Include="AnimStateMachine\AnimMachine.h" />
+    <ClInclude Include="AnimStateMachine\AnimState.h" />
+    <ClInclude Include="AnimStateMachine\anim_machine_helpers.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="Cfg.h" />
     <ClInclude Include="Controlled.h" />

@@ -2,8 +2,10 @@
 
 
 
-Obj::Obj()
+Obj::Obj(int maxHealth_)
 	: core{nullptr}
+	, maxHealth{maxHealth_}
+	, health{maxHealth_}
 {
 }
 
@@ -75,4 +77,25 @@ bool Obj::isRightKeyHeld()
 bool Obj::isRightKeyReleased()
 {
 	return rightReleased;
+}
+
+int Obj::getHealth()
+{
+	return health;
+}
+
+void Obj::takeHit(int damage_)
+{
+	wasJustHit = true;
+	health -= damage_;
+}
+
+bool Obj::tookAHit()
+{
+	if (wasJustHit)
+	{
+		wasJustHit = false;
+		return true;
+	}
+	return false;
 }

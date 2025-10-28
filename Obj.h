@@ -11,11 +11,14 @@ class Obj
 	bool rightPressed{ false }, rightHeld{ false }, rightReleased{ false };
 protected:
 	void updateKeyState();
-
+	const int maxHealth;
+	bool wasJustHit{ false };
+	int health;
 public:
-	std::unique_ptr<Core> core;
 
-	Obj();
+
+	std::unique_ptr<Core> core;
+	Obj(int maxHealth_ = 0);
 	virtual ~Obj() = 0;
 
 	virtual void input() = 0;
@@ -30,6 +33,10 @@ public:
 	bool isRightKeyPressed();
 	bool isRightKeyHeld();
 	bool isRightKeyReleased();
+
+	int getHealth();
+	void takeHit(int damage_ = 0);
+	bool tookAHit();
 
 	
 };
