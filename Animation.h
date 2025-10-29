@@ -4,6 +4,10 @@
 
 #include <string>
 
+class AnimState;
+class Animator;
+class Obj;
+
 struct Animation
 {
 	bool playing;

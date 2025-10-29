@@ -69,9 +69,6 @@
     <ClCompile Include="AnimStateMachine\AnimState.cpp">
       <Filter>Header Files\AnimStateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="AnimStateMachine\AnimMachine..cpp">
-      <Filter>Header Files\AnimStateMachine</Filter>
-    </ClCompile>
     <ClCompile Include="AnimStateMachine\StateSource\DeadState.cpp">
       <Filter>Header Files\AnimStateMachine\StateSource</Filter>
     </ClCompile>
@@ -88,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AnimStateMachine\AnimLambdas.cpp">
+      <Filter>Header Files\AnimStateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\AnimMachine.cpp">
       <Filter>Header Files\AnimStateMachine</Filter>
     </ClCompile>
   </ItemGroup>

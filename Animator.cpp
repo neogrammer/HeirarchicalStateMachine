@@ -1,11 +1,14 @@
 #include "Animator.h"
 #include <iostream>
+#include "AnimStateMachine/all_anim_states.h"
 
-Animator::Animator()
+Animator::Animator(Obj* owner_)
 	: animMap{}
 	, currAnim{}
 	, fallbackAnim{}
+	, animMachine{owner_}
 {
+	
 }
 Animator::~Animator() {}
 
@@ -14,20 +17,37 @@ sf::IntRect Animator::frame()
 	return animMap[currAnim]->frame();
 }
 
-void Animator::update()
+
+void Animator::setFacingRight(bool cond_) { animMachine.setFacingRight(cond_); }
+bool Animator::getFacingRight() { return animMachine.getFacingRight(); }
+
+void Animator::update(float dt_)
 {
-	if (animMap[currAnim]->donePlaying)
+
+	animMachine.update(dt_);
+	if (currAnim != animMachine.getCurrAnim())
+	{
+		stop();
+		currAnim = animMachine.getCurrAnim();
+		play();
+	}
+	/*if (animMap[currAnim]->donePlaying)
 	{
 		stop();
 		currAnim = animMap[currAnim]->fallbackName;
 		play();
-	}
+	}*/
 	animMap[currAnim]->animate();
 }
 
 sf::Texture& Animator::getTexture()
 {
 	return *animMap[currAnim]->textureSheet;
+}
+
+bool Animator::isOnLastFrame()
+{
+	return (this->animMap[currAnim]->index == animMap[currAnim]->numFrames - 1);
 }
 
 void Animator::setFallbackName(const std::string& animName_, const std::string& fallbackName_)
@@ -55,6 +75,7 @@ void Animator::setFallbackName(const std::string& animName_, const std::string& 
 
 const std::string& Animator::getCurrAnimName()
 {
+
 	return animMap[currAnim]->name;
 	//return currAnim;
 }

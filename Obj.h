@@ -24,7 +24,7 @@ public:
 	virtual void input() = 0;
 	virtual void update(float dt_) = 0;
 
-	virtual void render(sf::RenderWindow& wnd) = 0;
+	virtual void render(sf::RenderWindow& wnd, float dt_) = 0;
 
 	bool isLeftKeyPressed();
 	bool isLeftKeyHeld();

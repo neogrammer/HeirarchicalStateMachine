@@ -7,8 +7,9 @@
 #include <unordered_map>
 #include "anim_machine_helpers.h"
 #include <set>
-
+class Animator;
 class Obj;
+
 class AnimState
 {
 	using uniq = std::unique_ptr<AnimState>;
@@ -21,6 +22,7 @@ class AnimState
 
 	anim::CompoundStateType nextState{ anim::CompoundStateType::None };
 	float runTime{ 0.f };
+	bool finished{ false };
 	bool isTransient{ false };
 	bool isLastInSequence{ true };
 	bool readyToTransition{ false };
@@ -47,10 +49,16 @@ public:
 	anim::CompoundStateType getCompoundType();
 	anim::StateType getType();
 	anim::StateType getType2();
-
+	anim::CompoundStateType getNextState();
+	bool isReadyToTransition();
+	bool isStateTransient();
 	anim::StateType getTypeFromCompound(anim::CompoundStateType cType);
 	anim::StateType getType2FromCompound(anim::CompoundStateType cType);
-
+	bool isFinished();
+	bool partOfTransStack();
+	bool lastInSequence();
 	void update(float dt_);
+	virtual anim::CompoundStateType getNextInSequence() { return anim::CompoundStateType::None; }
+
 };
 

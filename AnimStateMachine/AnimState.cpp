@@ -1,7 +1,7 @@
 #include "AnimState.h"
 #include <stdexcept>
-#include "../Obj.h"
-#include "all_anim_states.h"
+#include "../all_object_types.h"
+#include "../Animator.h"
 
 auto noCondition = [&](AnimState& state) ->bool {
 	return false;
@@ -179,6 +179,7 @@ void AnimState::transition(anim::StateType type_, anim::StateType type2_)
 	}
 
 	nextState = buildCompoundType(type_, type2_);
+	readyToTransition = true;
 }
 
 anim::CompoundStateType AnimState::getCompoundType()
@@ -194,6 +195,21 @@ anim::StateType AnimState::getType()
 anim::StateType AnimState::getType2()
 {
 	return type2;
+}
+
+anim::CompoundStateType AnimState::getNextState()
+{
+	return nextState;
+}
+
+bool AnimState::isReadyToTransition()
+{
+	return readyToTransition;
+}
+
+bool AnimState::isStateTransient()
+{
+	return isTransient;
 }
 
 anim::StateType AnimState::getTypeFromCompound(anim::CompoundStateType cType)
@@ -224,10 +240,43 @@ anim::StateType AnimState::getType2FromCompound(anim::CompoundStateType cType)
 	}*/
 }
 
+bool AnimState::isFinished()
+{
+	return finished;
+}
+
+bool AnimState::partOfTransStack()
+{
+	return popOffOnCleanup;
+}
+
+bool AnimState::lastInSequence()
+{
+	return isLastInSequence;
+}
+
 
 
 void AnimState::update(float dt_)
 {
+	runTime += dt_;
+	if (isTransient && this->owner->core->animator->isOnLastFrame())
+	{
+		if (isLastInSequence)
+		{
+			finished = true;
+		}
+		else
+		{
+			if (getNextInSequence() == anim::CompoundStateType::None)
+			{
+				//should not happen
+				throw std::runtime_error("Uh oh, an animState that is not last in sequence has no next state in sequence");
+			}
+			finished = true;
+			transition(getTypeFromCompound(getNextInSequence()), getType2FromCompound(getNextInSequence()));
+		}
+	}
 	if (!owner)
 	{
 		throw std::runtime_error("No animState owner");

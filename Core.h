@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-#include "Animator.h"
+
 #include "Body.h"
 #include "Input.h"
 #include <memory>
-
+class Animator;
 class Core
 {
 public:

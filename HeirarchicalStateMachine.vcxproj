@@ -141,7 +141,7 @@
     <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AnimStateMachine\all_anim_states.cpp" />
     <ClCompile Include="AnimStateMachine\AnimLambdas.cpp" />
-    <ClCompile Include="AnimStateMachine\AnimMachine..cpp" />
+    <ClCompile Include="AnimStateMachine\AnimMachine.cpp" />
     <ClCompile Include="AnimStateMachine\AnimState.cpp" />
     <ClCompile Include="AnimStateMachine\StateSource\DeadState.cpp" />
     <ClCompile Include="AnimStateMachine\StateSource\HitState.cpp" />

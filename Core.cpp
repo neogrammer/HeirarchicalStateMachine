@@ -1,5 +1,5 @@
 #include "Core.h"
-
+#include "Animator.h"
 Core::Core()
 	: animator{nullptr}
 	, body{nullptr}

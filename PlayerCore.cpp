@@ -1,10 +1,12 @@
 #include "PlayerCore.h"
 #include "Cfg.h"
 
+#include "Obj.h"
+#include "AnimStateMachine/all_anim_states.h"
 
-PlayerCore::PlayerCore()
+PlayerCore::PlayerCore(Obj* owner_)
 {
-	animator = std::make_unique<Animator>();
+	animator = std::make_unique<Animator>(owner_);
 	AssignAnimations(Cfg::textures.get(Cfg::Textures::PlayerAtlas));
 	input = std::make_unique<Input>(input::SourceType::Controlled);
 	body = std::make_unique<Body>(sf::Vector2f{ 800.f,450.f }, sf::Vector2f{ 130.f,160.f }, sf::Vector2i{ 0,0 }, false);

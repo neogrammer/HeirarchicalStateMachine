@@ -1,6 +1,6 @@
 #pragma once
 #include "AnimState.h"
-class Obj;
+
 class HitState : public AnimState
 {
 public:

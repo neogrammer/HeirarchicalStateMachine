@@ -1,6 +1,7 @@
 #include "Animation.h"
 #include <iostream>
 #include "Animator.h"
+#include "AnimStateMachine/all_anim_states.h"
 
 Animation::Animation()
 {

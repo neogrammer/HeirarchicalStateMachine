@@ -50,7 +50,7 @@ int main()
 		wnd.clear(sf::Color(sf::Color::White));
 
 
-		player.render(wnd);
+		player.render(wnd, 0.016f);
 
 		wnd.display();
 	}

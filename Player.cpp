@@ -3,7 +3,7 @@
 #include <iostream>
 Player::Player()
 {
-	core = std::make_unique<PlayerCore>();
+	core = std::make_unique<PlayerCore>(this);
 
 }
 
@@ -26,30 +26,36 @@ void Player::update(float dt_)
 
 	if ((isLeftKeyPressed() || isLeftKeyHeld()) && !core->input->isRightHeld())
 	{
-		core->animator->setAnimation("Running_Left");
+		core->animator->setFacingRight(false);
+		core->body->vel.x = -300.f * dt_;
+	//	core->animator->setAnimation("Running_Left");
 	}
 	else if (isLeftKeyReleased())
 	{
-		core->animator->setAnimation("Idle_Left");
+		core->body->vel.x = 0.f;
+	//	core->animator->setAnimation("Idle_Left");
 	}
 
 	if ((isRightKeyPressed() || isRightKeyHeld()) && !core->input->isLeftHeld())
 	{
-		core->animator->setAnimation("Running_Right");
+		core->animator->setFacingRight(true);
+		core->body->vel.x = 300.f * dt_;
+	//	core->animator->setAnimation("Running_Right");
 	}
 	else if (isRightKeyReleased())
 	{
-		core->animator->setAnimation("Idle_Right");
+		core->body->vel.x = 0.f;
+	//	core->animator->setAnimation("Idle_Right");
 	}
 
 	// collisions can happen in caller after this before drawing
 }
-void Player::render(sf::RenderWindow& wnd)
+void Player::render(sf::RenderWindow& wnd, float dt_)
 {
 	
 
 	// in final positions for this frame, lets update to correct animation and render
-	core->animator->update();
+	core->animator->update(dt_);
 
 	sf::Sprite sprite{ core->animator->getTexture() };
 	sprite.setTextureRect(core->animator->frame());

@@ -17,6 +17,6 @@ public:
 
 	void input();
 	void update(float dt_);
-	void render(sf::RenderWindow& wnd);
+	void render(sf::RenderWindow& wnd, float dt_);
 
 };
