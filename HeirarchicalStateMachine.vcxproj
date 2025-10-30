@@ -159,6 +159,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerCore.cpp" />
     <ClCompile Include="Scripted.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Tilemap.cpp" />
+    <ClCompile Include="Tileset.cpp" />
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +190,9 @@
     <ClInclude Include="PlayerCore.h" />
     <ClInclude Include="ResourceMgr.h" />
     <ClInclude Include="Scripted.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="Tilemap.h" />
+    <ClInclude Include="Tileset.h" />
     <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
