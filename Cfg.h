@@ -24,7 +24,7 @@ public:
 	static void Initialize();
 	static void Uninitialize();
 	// Resource Enums 
-	enum class Textures {  PlayerAtlas, Count, None };
+	enum class Textures {  Tileset1, PlayerAtlas, Count, None };
 	enum class Fonts  {  Count, None };
 	enum class Music { Count, None };
     enum class Sounds { Count, None };

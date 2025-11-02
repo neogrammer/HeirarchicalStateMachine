@@ -99,6 +99,9 @@
     <ClCompile Include="Tileset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TileTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FSM\AnimStates.h">
@@ -304,5 +307,13 @@
     <Image Include="assets\MMAtlas.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\tileset\tileset1.tst">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="assets\tilemaps\tilemap1.map">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

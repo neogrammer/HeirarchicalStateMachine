@@ -1,9 +1,9 @@
 #include "Tile.h"
-
-Tile::Tile(int tw_, int th_, sf::IntRect rect_)
-	: tw{tw_}
-	, th{th_}
-	, texRect{rect_}
+#include "Tileset.h"
+Tile::Tile(TileType type_, sf::IntRect rect_, int tileNum_)
+	: texRect{rect_}
+	, tileNum{tileNum_}
+	, type{type_}
 {
 }
 
@@ -11,9 +11,9 @@ Tile::~Tile()
 {
 }
 
-Tile::Tile(const Tile& o) : tw{ o.tw }
-, th{ o.th }
-, texRect{ o.texRect }
+Tile::Tile(const Tile& o) 
+	: texRect{ o.texRect }
+	, tileNum{ o.tileNum }
 {
 }
 
@@ -26,9 +26,8 @@ Tile& Tile::operator=(const Tile& o)
 }
 
 Tile::Tile(Tile&& o) noexcept
-	: tw{ o.tw }
-	, th{ o.th }
-	, texRect{ o.texRect }
+	: texRect{ std::move(o.texRect) }
+	, tileNum{ std::move(tileNum) }
 {
 }
 
@@ -37,4 +36,14 @@ Tile& Tile::operator=(Tile&& o) noexcept
 	if (this == &o) { return *this; }
 	this->~Tile();
 	return *new(this) Tile{ std::move(o) };
+}
+
+const sf::IntRect& Tile::getRect() const
+{
+	return texRect;
+}
+
+int Tile::getTileNum()
+{
+	return tileNum;
 }

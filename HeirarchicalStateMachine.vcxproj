@@ -162,6 +162,7 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="Tileset.cpp" />
+    <ClCompile Include="TileTypes.cpp" />
     <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +235,10 @@
     <Image Include="assets\mmraw\thirdNoCharge.png" />
     <Image Include="assets\mmraw\zerox4sheet.gif" />
     <Image Include="assets\PlayerAtlas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\tilemaps\tilemap1.map" />
+    <None Include="assets\tileset\tileset1.tst" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

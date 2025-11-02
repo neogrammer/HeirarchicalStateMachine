@@ -35,7 +35,7 @@ void Cfg::initTextures()
 {
 	//textures.load(Textures::Tileset1, "../Client/Textures/tiles.png");
 	textures.load(Textures::PlayerAtlas, "assets/PlayerAtlas.png");
-
+	textures.load(Textures::Tileset1, "assets/textures/tilesets/tileset1.png");
 	
 }
 

@@ -7,6 +7,9 @@
 
 #include "Player.h"
 #include "Cfg.h"
+#include "Tileset.h"
+#include "Tilemap.h"
+#include "Tile.h"
 
 sf::RenderWindow wnd{ sf::VideoMode{{1600, 900}, 32U}, "Heirarchical Animation State Machine" };
 
@@ -18,6 +21,10 @@ int main()
 	
 	Cfg::Initialize();
 	Player player{ };
+	Tileset tileset{ Cfg::Textures::Tileset1, "assets/tilesets/tileset1.tst" };
+
+	Tilemap tilemap{ tileset, 50, 30, "assets/tilemaps/tilemap1.map" };
+
 
 	while (wnd.isOpen())
 	{
@@ -47,9 +54,9 @@ int main()
 
 		// move the view to keep player in the middle 1/3rd of the screen if needed,, set this view back to the window, then clear draw and display 
 
-		wnd.clear(sf::Color(sf::Color::White));
+		wnd.clear(sf::Color(sf::Color(47,147,247,255)));
 
-
+		tilemap.renderMap(wnd);
 		player.render(wnd, 0.016f);
 
 		wnd.display();
