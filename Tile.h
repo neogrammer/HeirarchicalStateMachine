@@ -18,4 +18,5 @@ public:
 
 	const sf::IntRect& getRect() const;
 	int getTileNum();
+	TileType getTileType();
 };

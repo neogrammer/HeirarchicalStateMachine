@@ -19,34 +19,47 @@ void Player::input()
 	core->input->updateState();
 	updateKeyState();
 
+	
+
+
 }
 void Player::update(float dt_)
 {
-	core->body->update(dt_);
-
+	
 	if ((isLeftKeyPressed() || isLeftKeyHeld()) && !core->input->isRightHeld())
 	{
 		core->animator->setFacingRight(false);
-		core->body->vel.x = -300.f * dt_;
-	//	core->animator->setAnimation("Running_Left");
+		if (core->body->vel.x >= -5.f)
+		{
+			core->body->impulse({ -600.f,0.f });
+		}
+		core->body->accel.x = -300.f;
+		//	core->animator->setAnimation("Running_Left");
 	}
 	else if (isLeftKeyReleased())
 	{
 		core->body->vel.x = 0.f;
-	//	core->animator->setAnimation("Idle_Left");
+		//	core->animator->setAnimation("Idle_Left");
 	}
 
 	if ((isRightKeyPressed() || isRightKeyHeld()) && !core->input->isLeftHeld())
 	{
 		core->animator->setFacingRight(true);
-		core->body->vel.x = 300.f * dt_;
-	//	core->animator->setAnimation("Running_Right");
+		if (core->body->vel.x <= 5.f)
+		{
+			core->body->impulse({ 600.f,0.f });
+		}
+		core->body->accel.x = 300.f;
+		//	core->animator->setAnimation("Running_Right");
 	}
 	else if (isRightKeyReleased())
 	{
 		core->body->vel.x = 0.f;
-	//	core->animator->setAnimation("Idle_Right");
+		//	core->animator->setAnimation("Idle_Right");
 	}
+
+	
+	core->body->update(dt_);
 
 	// collisions can happen in caller after this before drawing
 }

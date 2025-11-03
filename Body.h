@@ -4,8 +4,10 @@
 
 struct Body
 {
+	const float MAX_SPEEDX{ 500.f };
+	const float MAX_SPEEDY{ 1800.f };
 
-
+	
 	// handle will be center of object same as rendered texture rectangle, no offset between the two needed
 	sf::Vector2f pos;
 	sf::Vector2f size;
@@ -21,7 +23,7 @@ struct Body
 	sf::Vector2i texOff;
 
 	Body();
-	Body(sf::Vector2f pos_, sf::Vector2f size_, sf::Vector2i texOff_ = {0,0}, bool affectedByGravity_ = true, float gravity_ = 400.f, sf::Vector2f vel_ = {0.f,0.f}, sf::Vector2f accel_ = {0.f,0.f});
+	Body(sf::Vector2f pos_, sf::Vector2f size_, sf::Vector2i texOff_ = {0,0}, bool affectedByGravity_ = true, float gravity_ = 621.f, sf::Vector2f vel_ = {0.f,0.f}, sf::Vector2f accel_ = {0.f,0.f});
 	~Body() = default;
 
 	float top();

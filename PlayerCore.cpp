@@ -10,6 +10,7 @@ PlayerCore::PlayerCore(Obj* owner_)
 	AssignAnimations(Cfg::textures.get(Cfg::Textures::PlayerAtlas));
 	input = std::make_unique<Input>(input::SourceType::Controlled);
 	body = std::make_unique<Body>(sf::Vector2f{ 800.f,450.f }, sf::Vector2f{ 130.f,160.f }, sf::Vector2i{ 0,0 }, false);
+	body->affectedByGravity = true;
 }
 
 PlayerCore::~PlayerCore() {}

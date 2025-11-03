@@ -47,3 +47,8 @@ int Tile::getTileNum()
 {
 	return tileNum;
 }
+
+TileType Tile::getTileType()
+{
+	return type;
+}

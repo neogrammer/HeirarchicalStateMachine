@@ -163,7 +163,10 @@ void Body::update(float dt_)
 
 	if (affectedByGravity)
 	{
+	
 		accel.y += gravity;
+
+		
 	}
 	updateVel();
 
@@ -179,9 +182,34 @@ void Body::update(float dt_)
 void Body::updateVel()
 {
 	prevVel = vel;
-	vel += accel * dt;
+	if (affectedByGravity)
+	{
+		if (vel.y == 0.f)
+		{
+			if (accel.y > 0.f)
+			{
+				vel.y = 988.6f;
+				vel.x += accel.x * dt;
+			}
+			else
+			{
+				vel += accel * dt;
+
+			}
+		}
+		else
+		{
+			vel += accel * dt;
+		}
+	}
+	else
+	{
+		vel += accel * dt;
+	}
 	// we just updated for the frame, so now any acceleration adding accumulates for next frame.  with no force pushing on entity acceleration force is zero, must constantly apply force to accelerate
 	accel = { 0.f,0.f };
+	if (std::fabsf(vel.x) > MAX_SPEEDX) { if (vel.x < 0.f) { vel.x = -MAX_SPEEDX; } if (vel.x > 0.f) { vel.x = MAX_SPEEDX; } }
+	if (std::fabsf(vel.y) > MAX_SPEEDY) { if (vel.y < 0.f) { vel.y = -MAX_SPEEDY; } if (vel.y > 0.f) { vel.y = MAX_SPEEDY; } }
 }
 
 void Body::impulse(sf::Vector2f vel_, bool updatePrev_)
@@ -218,8 +246,33 @@ bool Body::intersects(Body& other_)
 
 void Body::resolve(Body& other_)
 {
+
+	//  need a first pass, then a better algorithm and then sort the results and collide on the closest one first
 	if (intersects(other_))
 	{
+
+		if (dir().y > 0.f)
+		{
+			float offset = bottom() - other_.top();
+			move({ 0.f, -offset });
+		}
+		else if (dir().y < 0.f)
+		{
+			float offset = other_.bottom() - top();
+			move({ 0.f, offset });
+		}
+		else
+		{
+			// dir().x == 0.f no change in x, unless aright == bleft, in which case move left one pixel
+			if (bottom() == other_.top())
+			{
+				move({ 0.f, -1.f });
+			}
+			else if (other_.bottom() == top())
+			{
+				move({ 0.f, 1.f });
+			}
+		}
 
 		if (dir().x > 0.f)
 		{
@@ -245,28 +298,7 @@ void Body::resolve(Body& other_)
 			}
 		}
 
-		if (dir().y > 0.f)
-		{
-			float offset = bottom() - other_.top();
-			move({ 0.f, -offset });
-		}
-		else if (dir().y < 0.f)
-		{
-			float offset = other_.bottom() - top();
-			move({ 0.f, offset });
-		}
-		else
-		{
-			// dir().x == 0.f no change in x, unless aright == bleft, in which case move left one pixel
-			if (bottom() == other_.top())
-			{
-				move({ 0.f, -1.f });
-			}
-			else if (other_.bottom() == top())
-			{
-				move({ 0.f, 1.f });
-			}
-		}
+		
 	}
 
 }
@@ -285,34 +317,11 @@ void Body::resolve(sf::FloatRect other_)
 	if (intersects(other_))
 	{
 
-		if (dir().x > 0.f)
-		{
-			float offset = right() - other_.position.x;
-			move({ -offset, 0.f });
-		}
-		else if (dir().x < 0.f)
-		{
-			float offset = other_.position.x + other_.size.x - left();
-			move({ offset, 0.f });
-
-		}
-		else
-		{
-			// dir().x == 0.f no change in x, unless aright == bleft, in which case move left one pixel
-			if (right() == other_.position.x)
-			{
-				move({ -1.f, 0.f });
-			}
-			else if (other_.position.x + other_.size.x == left())
-			{
-				move({ 1.f, 0.f });
-			}
-		}
-
 		if (dir().y > 0.f)
 		{
 			float offset = bottom() - other_.position.y;
 			move({ 0.f, -offset });
+			
 		}
 		else if (dir().y < 0.f)
 		{
@@ -331,6 +340,33 @@ void Body::resolve(sf::FloatRect other_)
 				move({ 0.f, 1.f });
 			}
 		}
+
+		if (dir().x > 0.f)
+		{
+			float offset = right() - other_.position.x;
+			move({ -offset, 0.f });
+			
+		}
+		else if (dir().x < 0.f)
+		{
+			float offset = other_.position.x + other_.size.x - left();
+			move({ offset, 0.f });
+			
+		}
+		else
+		{
+			// dir().x == 0.f no change in x, unless aright == bleft, in which case move left one pixel
+			if (right() == other_.position.x)
+			{
+				move({ -1.f, 0.f });
+			}
+			else if (other_.position.x + other_.size.x == left())
+			{
+				move({ 1.f, 0.f });
+			}
+		}
+
+		
 	}
 
 }

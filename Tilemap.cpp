@@ -88,6 +88,11 @@ Tile& Tilemap::getTile(int num_)
 	return *tileset->tileset[num_];
 }
 
+Tile& Tilemap::getMapTile(int num_)
+{
+	return *tileset->tileset[tilemap[num_]];
+}
+
 sf::Sprite Tilemap::getSprite(int num_)
 {
 	return static_cast<sf::Sprite&&>(tileset->getSprite(num_));
@@ -96,4 +101,20 @@ sf::Sprite Tilemap::getSprite(int num_)
 sf::Sprite Tilemap::getSprite(int col_, int row_)
 {
 	return static_cast<sf::Sprite&&>(tileset->getSprite(col_, row_));
+}
+
+sf::Sprite Tilemap::getMapTileSprite(int num_)
+{
+	sf::Sprite&& spr = static_cast<sf::Sprite&&>(tileset->getSprite(tilemap[num_]));
+	int col = num_ % mapW;
+	int row = num_ / mapW;
+	int xpos = col * tile::tw;
+	int ypos = row * tile::th;
+	spr.setPosition({ (float)xpos,(float)ypos });
+	return static_cast<sf::Sprite&&>(spr);
+}
+
+int Tilemap::getNumTilesInMap()
+{
+	return mapW * mapH;
 }

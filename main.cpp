@@ -25,6 +25,8 @@ int main()
 
 	Tilemap tilemap{ tileset, 50, 30, "assets/tilemaps/tilemap1.map" };
 
+	sf::Clock gameTimer;
+
 
 	while (wnd.isOpen())
 	{
@@ -49,15 +51,24 @@ int main()
 		// velocities for the checks and then the entities are put in the right position for the frame
 
 		//update the animator to get the right animation frame then set the texture rect for the sprite so that the correct frame is drawn
+		float dt = gameTimer.restart().asSeconds();
 
-		player.update(0.016f);
+
+		player.update(dt);
+
+		for (int i = 0; i < tilemap.getNumTilesInMap(); i++)
+		{
+			if (tilemap.getMapTile(i).getTileType() == TileType::Empty) { continue; }
+			sf::Sprite spr{ tilemap.getMapTileSprite(i) };
+			player.core->body->resolve(spr.getGlobalBounds());
+		}
 
 		// move the view to keep player in the middle 1/3rd of the screen if needed,, set this view back to the window, then clear draw and display 
 
 		wnd.clear(sf::Color(sf::Color(47,147,247,255)));
 
 		tilemap.renderMap(wnd);
-		player.render(wnd, 0.016f);
+		player.render(wnd, dt);
 
 		wnd.display();
 	}
