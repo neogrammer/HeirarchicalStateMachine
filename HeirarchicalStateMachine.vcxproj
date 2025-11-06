@@ -156,6 +156,7 @@
     <ClCompile Include="InputSource.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obj.cpp" />
+    <ClCompile Include="Phys.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerCore.cpp" />
     <ClCompile Include="Scripted.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="InputSource.h" />
     <ClInclude Include="InputSourceTypes.h" />
     <ClInclude Include="Obj.h" />
+    <ClInclude Include="Phys.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerCore.h" />
     <ClInclude Include="ResourceMgr.h" />

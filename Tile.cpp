@@ -52,3 +52,28 @@ TileType Tile::getTileType()
 {
 	return type;
 }
+
+void Tile::setPosFromTilemap(sf::Vector2f pos_)
+{
+	pos = pos_;
+}
+
+void Tile::setSizeFromTilemap(sf::Vector2f size_)
+{
+	size = size_;
+}
+
+const sf::Vector2f& Tile::getPosFromTilemap() const
+{
+	return pos;
+}
+
+const sf::Vector2f& Tile::getSizeFromTilemap() const
+{
+	return size;
+}
+
+const sf::Vector2f& Tile::getPos() const
+{
+	return getPosFromTilemap();
+}

@@ -28,4 +28,5 @@ public:
 	sf::Sprite getSprite(int col_, int row_);
 	int getNumTilesInMap();
 	sf::Sprite getMapTileSprite(int num_);
+	std::vector<Tile*> getTiles();
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "Core.h"
+
 class Obj
 {
 	// Key Checks
@@ -14,6 +15,7 @@ protected:
 	const int maxHealth;
 	bool wasJustHit{ false };
 	int health;
+	bool alive{ true };
 public:
 
 
@@ -37,6 +39,13 @@ public:
 	int getHealth();
 	void takeHit(int damage_ = 0);
 	bool tookAHit();
+
+	const sf::Vector2f getPos() const;
+	const sf::Vector2f getSize() const;
+	bool isAlive();
+
+	void move(sf::Vector2f amt_);
+
 
 	
 };

@@ -10,6 +10,7 @@
 #include "Tileset.h"
 #include "Tilemap.h"
 #include "Tile.h"
+#include "Phys.h"
 
 sf::RenderWindow wnd{ sf::VideoMode{{1600, 900}, 32U}, "Heirarchical Animation State Machine" };
 
@@ -56,12 +57,27 @@ int main()
 
 		player.update(dt);
 
-		for (int i = 0; i < tilemap.getNumTilesInMap(); i++)
+		
+		auto tmp = tilemap.getTiles();
+
+		phys::CollidePlayer_Tiles(player, tmp);
+
+
+		for (auto* t : tmp)
 		{
-			if (tilemap.getMapTile(i).getTileType() == TileType::Empty) { continue; }
-			sf::Sprite spr{ tilemap.getMapTileSprite(i) };
-			player.core->body->resolve(spr.getGlobalBounds());
+			if (t)
+			{
+				delete t;
+				t = nullptr;
+			}
 		}
+
+		//for (int i = 0; i < tilemap.getNumTilesInMap(); i++)
+		//{
+		//	if (tilemap.getMapTile(i).getTileType() == TileType::Empty) { continue; }
+		//	sf::Sprite spr{ tilemap.getMapTileSprite(i) };
+		//	player.core->body->resolve(spr.getGlobalBounds());
+		//}
 
 		// move the view to keep player in the middle 1/3rd of the screen if needed,, set this view back to the window, then clear draw and display 
 

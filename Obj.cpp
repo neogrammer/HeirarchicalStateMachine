@@ -99,3 +99,23 @@ bool Obj::tookAHit()
 	}
 	return false;
 }
+
+const sf::Vector2f Obj::getPos() const
+{
+	return {core->body->left(), core->body->top()};
+}
+
+const sf::Vector2f Obj::getSize() const
+{
+	return { core->body->width(), core->body->height() };
+}
+
+bool Obj::isAlive()
+{
+	return alive;
+}
+
+void Obj::move(sf::Vector2f amt_)
+{
+	core->body->move(amt_);
+}

@@ -114,6 +114,25 @@ sf::Sprite Tilemap::getMapTileSprite(int num_)
 	return static_cast<sf::Sprite&&>(spr);
 }
 
+std::vector<Tile*> Tilemap::getTiles()
+{
+	std::vector<Tile*> tmp;
+	tmp.reserve(tilemap.size());
+	for (int i = 0; i < tilemap.size(); i++)
+	{
+		Tile* tile = new Tile{ tileset->tileset[tilemap[i]]->getTileType(),tileset->tileset[tilemap[i]]->getRect(), tileset->tileset[tilemap[i]]->getTileNum() };
+
+		int x = i % mapW;
+		int y = i / mapW;
+		tile->setPosFromTilemap({ (float)x * 64.f,(float)y * 64.f});
+		tile->setSizeFromTilemap({ 64.f,64.f });
+
+		tmp.emplace_back(std::move(tile));
+
+	}
+	return tmp;
+}
+
 int Tilemap::getNumTilesInMap()
 {
 	return mapW * mapH;
