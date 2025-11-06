@@ -58,3 +58,48 @@ public:
 
 
 };
+
+class RisingState : public AnimState
+{
+public:
+	RisingState();
+	~RisingState() override final;
+
+	RisingState(Obj* obj_);
+	RisingState(RisingState&& other_) noexcept;
+	RisingState& operator=(RisingState&& other_) noexcept;
+	RisingState(const RisingState& other_) = delete;
+	RisingState& operator=(const RisingState& other_) = delete;
+
+
+};
+
+class FallingState : public AnimState
+{
+public:
+	FallingState();
+	~FallingState() override final;
+
+	FallingState(Obj* obj_);
+	FallingState(FallingState&& other_) noexcept;
+	FallingState& operator=(FallingState&& other_) noexcept;
+	FallingState(const FallingState& other_) = delete;
+	FallingState& operator=(const FallingState& other_) = delete;
+
+
+};
+
+class LandingState : public AnimState
+{
+public:
+	LandingState();
+	~LandingState() override final;
+
+	LandingState(Obj* obj_);
+	LandingState(LandingState&& other_) noexcept;
+	LandingState& operator=(LandingState&& other_) noexcept;
+	LandingState(const LandingState& other_) = delete;
+	LandingState& operator=(const LandingState& other_) = delete;
+
+
+};

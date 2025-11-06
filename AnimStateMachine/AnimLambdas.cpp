@@ -17,3 +17,22 @@ std::function<bool(AnimState& state)> lmb::wasHitCondition = [&](AnimState& stat
         return true;
     return false;
     };
+
+
+std::function<bool(AnimState& state)> isGroundedCondition = [&](AnimState& state)->bool {
+    if (state.getOwner().core->body->grounded)
+        return true;
+    return false;
+    };
+
+std::function<bool(AnimState& state)> isRisingCondition = [&](AnimState& state)->bool {
+    if (state.getOwner().core->body->grounded == false && state.getOwner().core->body->vel.y < -0.001f)
+        return true;
+    return false;
+    };
+
+std::function<bool(AnimState& state)> isFallingCondition = [&](AnimState& state)->bool {
+    if (state.getOwner().core->body->grounded == false && state.getOwner().core->body->vel.y > 0.001f)
+        return true;
+    return false;
+    };

@@ -5,11 +5,12 @@
 class Obj
 {
 	// Key Checks
-	bool leftHeldCheck{ false }, rightHeldCheck{ false };
+	bool leftHeldCheck{ false }, rightHeldCheck{ false }, spaceHeldCheck{ false };
 
 	// Key state holders
 	bool leftPressed{ false }, leftHeld{ false }, leftReleased{ false };
 	bool rightPressed{ false }, rightHeld{ false }, rightReleased{ false };
+	bool spacePressed{ false }, spaceHeld{ false }, spaceReleased{ false };
 protected:
 	void updateKeyState();
 	const int maxHealth;
@@ -35,6 +36,11 @@ public:
 	bool isRightKeyPressed();
 	bool isRightKeyHeld();
 	bool isRightKeyReleased();
+
+	bool isSpaceKeyPressed();
+	bool isSpaceKeyHeld();
+	bool isSpaceKeyReleased();
+
 
 	int getHealth();
 	void takeHit(int damage_ = 0);

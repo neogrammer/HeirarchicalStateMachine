@@ -16,6 +16,9 @@ std::unique_ptr<AnimState> AnimMachine::buildState(anim::CompoundStateType state
 	case c::Dead: { return std::make_unique<DeadState>(&stateStack.top()->getOwner()); } break;
 	case c::Hit: { return std::make_unique<HitState>(&stateStack.top()->getOwner()); } break;
 	case c::Running: { return std::make_unique<RunningState>(&stateStack.top()->getOwner()); } break;
+	case c::Landing: { return std::make_unique<LandingState>(&stateStack.top()->getOwner()); } break;
+	case c::Rising: { return std::make_unique<RisingState>(&stateStack.top()->getOwner()); } break;
+	case c::Falling: { return std::make_unique<FallingState>(&stateStack.top()->getOwner()); } break;
 	default: break;
 	}
 
@@ -51,6 +54,9 @@ std::string AnimMachine::stateToString()
 	case c::Hit: { return "Hit"; } break;
 	case c::Dead: { return "Dead"; } break;
 	case c::Running: { return "Running"; } break;
+	case c::Landing: { return "Landing"; } break;
+	case c::Rising: { return "Rising"; } break;
+	case c::Falling: { return "Falling"; } break;
 	default: break;
 	}
 	return "Idle";

@@ -47,6 +47,23 @@ void Obj::updateKeyState()
 		rightHeldCheck = false;
 	}
 	
+	// space key
+	spacePressed = false; spaceHeld = false; spaceReleased = false;
+	if (core->input->isSpaceHeld() && !spaceHeldCheck)
+	{
+		spacePressed = true;
+		spaceHeldCheck = true;
+	}
+	else if (core->input->isSpaceHeld())
+	{
+		spaceHeld = true;
+	}
+	else if (spaceHeldCheck)
+	{
+		spaceReleased = true;
+		spaceHeldCheck = false;
+	}
+
 }
 
 bool Obj::isLeftKeyPressed()
@@ -77,6 +94,21 @@ bool Obj::isRightKeyHeld()
 bool Obj::isRightKeyReleased()
 {
 	return rightReleased;
+}
+
+bool Obj::isSpaceKeyPressed()
+{
+	return spacePressed;
+}
+
+bool Obj::isSpaceKeyHeld()
+{
+	return spaceHeld;
+}
+
+bool Obj::isSpaceKeyReleased()
+{
+	return spaceReleased;
 }
 
 int Obj::getHealth()

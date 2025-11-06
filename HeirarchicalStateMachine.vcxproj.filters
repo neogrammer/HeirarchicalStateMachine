@@ -105,6 +105,15 @@
     <ClCompile Include="Phys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\FallingState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\LandingState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\RisingState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FSM\AnimStates.h">

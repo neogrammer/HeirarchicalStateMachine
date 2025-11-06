@@ -6,7 +6,8 @@ namespace io
 	{
 		Left = 0,
 		Right = 1,
-		Count = 2,
-		None = 3
+		Space = 2,
+		Count,
+		None
 	};
 }

@@ -23,6 +23,14 @@ RunningState::RunningState(Obj* obj_)
     addPossible(anim::CompoundStateType::Idle, [&](AnimState& state)->bool {
         return (std::fabsf(state.getOwner().core->body->vel.x) == 0.f);
     });
+    addPossible(anim::CompoundStateType::Rising, [&](AnimState& state)->bool {
+        if (state.getOwner().isSpaceKeyPressed() && state.getOwner().core->body->grounded)
+        {
+            state.getOwner().core->body->grounded = false;
+            return true;
+        }
+        return false;
+        });
 
 }
 

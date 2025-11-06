@@ -166,6 +166,9 @@ namespace phys
 
                     if (resolveY < 0 && dynamic_cast<Player*>(&o))
                     {
+                        o.core->body->landing = true;
+                        o.core->body->grounded = true;
+                        o.core->body->vel.y = 0.f;
                         //dynamic_cast<Player*>(&o)->land();
                         //dynamic_cast<Player*>(&o)->collisionOccurred = true;
                         //dynamic_cast<Player*>(&o)->collisionRect = fr.value();

@@ -49,7 +49,7 @@ bool Input::isShootHeld()
 	return false;
 }
 
-bool Input::isJumpHeld()
+bool Input::isSpaceHeld()
 {
-	return false;
+	return keys[int(io::Key::Space)];
 }

@@ -30,6 +30,14 @@ IdleState::IdleState(Obj* obj_)
             return false;
         }
     });
+    addPossible(anim::CompoundStateType::Rising, [&](AnimState& state)->bool {
+        if (state.getOwner().isSpaceKeyPressed() && state.getOwner().core->body->grounded)
+        {
+            state.getOwner().core->body->grounded = false;
+            return true;
+        }
+        return false;
+        });
 }
 
 IdleState::IdleState(IdleState&& other_) noexcept

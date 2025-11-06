@@ -20,4 +20,6 @@ void Controlled::update()
 		(*keys)[int(io::Key::Left)] = true;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 		(*keys)[int(io::Key::Right)] = true;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+		(*keys)[int(io::Key::Space)] = true;
 }

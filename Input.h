@@ -22,6 +22,6 @@ public:
 	bool isLeftHeld();
 	bool isRightHeld();
 	bool isShootHeld();
-	bool isJumpHeld();
+	bool isSpaceHeld();
 
 };

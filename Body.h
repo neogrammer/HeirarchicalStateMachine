@@ -21,6 +21,8 @@ struct Body
 	float		 dt;
 	float		 prevDT;
 	sf::Vector2i texOff;
+	bool grounded;
+	bool landing;
 
 	Body();
 	Body(sf::Vector2f pos_, sf::Vector2f size_, sf::Vector2i texOff_ = {0,0}, bool affectedByGravity_ = true, float gravity_ = 621.f, sf::Vector2f vel_ = {0.f,0.f}, sf::Vector2f accel_ = {0.f,0.f});

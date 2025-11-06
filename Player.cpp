@@ -26,6 +26,14 @@ void Player::input()
 void Player::update(float dt_)
 {
 	
+	if (isSpaceKeyPressed() && core->body->grounded == true)
+	{
+		// player started jump
+		 //core->body->grounded = false;
+		core->body->landing = false;
+		core->body->impulse({0.f, -600.f});
+	}
+
 	if ((isLeftKeyPressed() || isLeftKeyHeld()) && !core->input->isRightHeld())
 	{
 		core->animator->setFacingRight(false);
@@ -51,10 +59,10 @@ void Player::update(float dt_)
 		}
 		core->body->accel.x = 300.f;
 		//	core->animator->setAnimation("Running_Right");
-	}
+	}                
 	else if (isRightKeyReleased())
 	{
-		core->body->vel.x = 0.f;
+   		core->body->vel.x = 0.f;
 		//	core->animator->setAnimation("Idle_Right");
 	}
 
