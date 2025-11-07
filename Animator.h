@@ -16,7 +16,7 @@ class Animator
 public:
 
 	Animator() = delete;
-	Animator(Obj* owner);
+	Animator(Obj* owner, std::unique_ptr<AnimState>&  state_);
 	~Animator();
 	void addAnimation(sf::Texture& textureSheet_, const std::string& name_, uint16_t numFrames_, sf::Vector2i frameSize_, sf::Vector2i startPxl_ = { 0,0 }, float frameDelay_ = 0.1f, bool loop_ = false, float loopDelay_ = 0.f, const std::string& fallbackAnim_ = "NONE");
 	bool setAnimation(const std::string& name_);
@@ -35,6 +35,8 @@ public:
 
 	void setFacingRight(bool cond_);
 	bool getFacingRight();
+
+	AnimMachine& getMachine();
 
 	bool isOnLastFrame();
 

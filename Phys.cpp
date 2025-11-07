@@ -162,12 +162,12 @@ namespace phys
                     else
                         resolveY = (or_.position.y < tr_.position.y) ? -fr->size.y : fr->size.y;
 
-                    o.move({ resolveX, resolveY });
+                     o.move({ resolveX, resolveY });
 
                     if (resolveY < 0 && dynamic_cast<Player*>(&o))
                     {
                         o.core->body->landing = true;
-                        o.core->body->grounded = true;
+
                         o.core->body->vel.y = 0.f;
                         //dynamic_cast<Player*>(&o)->land();
                         //dynamic_cast<Player*>(&o)->collisionOccurred = true;

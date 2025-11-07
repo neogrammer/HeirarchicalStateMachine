@@ -18,6 +18,7 @@ namespace anim
 		ZipHolding,
 		Hit,
 		Dead,
+		Launching,
 		Count,
 		None
 	};
@@ -37,6 +38,7 @@ namespace anim
 		ZipHolding,
 		Hit,
 		Dead,
+		Launching,
 		Count,
 		None
 	};

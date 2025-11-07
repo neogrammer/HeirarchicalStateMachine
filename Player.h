@@ -18,5 +18,7 @@ public:
 	void input();
 	void update(float dt_);
 	void render(sf::RenderWindow& wnd, float dt_);
+	void updateAnimations(float dt_);
+
 
 };

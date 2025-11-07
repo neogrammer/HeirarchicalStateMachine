@@ -2,11 +2,11 @@
 #include <iostream>
 #include "AnimStateMachine/all_anim_states.h"
 
-Animator::Animator(Obj* owner_)
+Animator::Animator(Obj* owner_, std::unique_ptr<AnimState>& state_)
 	: animMap{}
 	, currAnim{}
 	, fallbackAnim{}
-	, animMachine{owner_}
+	, animMachine{owner_, state_}
 {
 	
 }
@@ -20,6 +20,11 @@ sf::IntRect Animator::frame()
 
 void Animator::setFacingRight(bool cond_) { animMachine.setFacingRight(cond_); }
 bool Animator::getFacingRight() { return animMachine.getFacingRight(); }
+
+AnimMachine& Animator::getMachine()
+{
+	return animMachine;
+}
 
 void Animator::update(float dt_)
 {
@@ -118,6 +123,7 @@ bool Animator::setAnimation(const std::string& name_)
 	}
 	return true;
 }
+
 
 
 void Animator::play() 

@@ -148,6 +148,7 @@
     <ClCompile Include="AnimStateMachine\StateSource\HitState.cpp" />
     <ClCompile Include="AnimStateMachine\StateSource\IdleState.cpp" />
     <ClCompile Include="AnimStateMachine\StateSource\LandingState.cpp" />
+    <ClCompile Include="AnimStateMachine\StateSource\LaunchingState.cpp" />
     <ClCompile Include="AnimStateMachine\StateSource\RisingState.cpp" />
     <ClCompile Include="AnimStateMachine\StateSource\RunningState.cpp" />
     <ClCompile Include="Body.cpp" />

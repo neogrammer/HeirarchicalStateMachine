@@ -80,6 +80,7 @@ int main()
 		//}
 
 		// move the view to keep player in the middle 1/3rd of the screen if needed,, set this view back to the window, then clear draw and display 
+		player.updateAnimations(dt);
 
 		wnd.clear(sf::Color(sf::Color(47,147,247,255)));
 

@@ -18,7 +18,7 @@ Body::Body(sf::Vector2f pos_, sf::Vector2f size_,sf::Vector2i texOff_, bool affe
 	, prevAccel{ accel_ }
 	, dt{ 0.f }
 	, prevDT{ 0.f }
-	, grounded{false}
+    , grounded{ false }
 	, landing{false}
 {
 }

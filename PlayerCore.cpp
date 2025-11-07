@@ -6,7 +6,11 @@
 
 PlayerCore::PlayerCore(Obj* owner_)
 {
-	animator = std::make_unique<Animator>(owner_);
+	
+	
+	std::unique_ptr<AnimState> state = std::make_unique<FallingState>(owner_);
+	animator = std::make_unique<Animator>(owner_, state);
+	state = nullptr;
 	AssignAnimations(Cfg::textures.get(Cfg::Textures::PlayerAtlas));
 	input = std::make_unique<Input>(input::SourceType::Controlled);
 	body = std::make_unique<Body>(sf::Vector2f{ 800.f,450.f }, sf::Vector2f{ 49.f,78.f }, sf::Vector2i{ 43,50 }, false);
@@ -60,14 +64,16 @@ void PlayerCore::AssignAnimations(sf::Texture& tex_)
 	// LiftingOff, NearingPeak, LeavingPeak, Falling, and Landing
 	animator->addAnimation(tex_, "Rising_Right", 2, { 130,160 }, { 130 * 2,160 * 5 }, 0.07f, false, 0.f );
 	animator->addAnimation(tex_, "Rising_Left", 2, { 130,160 }, { 130 * 2,160 * 18 }, 0.07f, false);
+	animator->addAnimation(tex_, "Launching_Right", 2, { 130,160 }, { 130 * 0,160 * 5 }, 0.07f, false, 0.f, "Rising_Right");
+	animator->addAnimation(tex_, "Launching_Left", 2, { 130,160 }, { 130 * 2,160 * 18 }, 0.07f, false, 0.f, "Rising_Left");
 	animator->addAnimation(tex_, "NearingPeak_Right", 1, { 130,160 }, { 130 * 4,160 * 5 }, 0.07f );
 	animator->addAnimation(tex_, "NearingPeak_Left", 1, { 130,160 }, { 130 * 4,160 * 18 }, 0.07f );
 	animator->addAnimation(tex_, "LeavingPeak_Right", 1, { 130,160 }, { 130 * 5,160 * 5 }, 0.07f );
 	animator->addAnimation(tex_, "LeavingPeak_Left", 1, { 130,160 }, { 130 * 5,160 * 18 }, 0.07f );
 	animator->addAnimation(tex_, "Falling_Right", 2, { 130,160 }, { 130 * 6,160 * 5 }, 0.07f );
 	animator->addAnimation(tex_, "Falling_Left", 2, { 130,160 }, { 130 * 6,160 * 18 }, 0.07f );
-	animator->addAnimation(tex_, "Landing_Right", 3, { 130,160 }, { 130 * 8,160 * 5 }, 0.07f, false, 0.f, "Idle_Right");
-	animator->addAnimation(tex_, "Landing_Left", 3, { 130,160 }, { 130 * 8,160 * 18 }, 0.07f, false, 0.f, "Idle_Left");
+	animator->addAnimation(tex_, "Landing_Right", 3, { 130,160 }, { 130 * 8,160 * 5 }, 0.07f, false, 0.f, "Landing_Right");
+	animator->addAnimation(tex_, "Landing_Left", 3, { 130,160 }, { 130 * 8,160 * 18 }, 0.07f, false, 0.f, "Landing_Left");
 
 	// LiftingOffAndShooting, NearingPeakAndShooting, LeavingPeakAndShooting, FallingAndShooting, and LandingAndShooting
 	animator->addAnimation(tex_, "RisingAndShooting_Right", 4, { 130,160 }, { 130 * 0,160 * 6 }, 0.07f );
@@ -128,8 +134,6 @@ void PlayerCore::AssignAnimations(sf::Texture& tex_)
 	animator->addAnimation(tex_, "KickWallAndShooting_Left", 1, { 130,160 }, { 130 * 5,160 * 26 }, 0.07f, false, 0.3f, "NearingPeakAndShooting_Left");
 	animator->addAnimation(tex_, "KickWallAndCharging_Right", 1, { 130,160 }, { 130 * 5,160 * 14 }, 0.07f, false, 0.3f, "NearingPeakAndCharging_Right");
 	animator->addAnimation(tex_, "KickWallAndCharging_Left", 1, { 130,160 }, { 130 * 5,160 * 27 }, 0.07f, false, 0.3f, "NearingPeakAndCharging_Left");
-
-
 
 	animator->setAnimation("Falling_Right");
 }

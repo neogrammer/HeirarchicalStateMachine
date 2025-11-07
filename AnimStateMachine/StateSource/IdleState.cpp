@@ -4,7 +4,7 @@
 // sequences that get popped off at the end of the sequence
 // may not be needed
 #include "../AnimLambdas.h"
-
+#include "../../Animator.h"
 #include "../../Obj.h"
 
 IdleState::IdleState()
@@ -30,9 +30,12 @@ IdleState::IdleState(Obj* obj_)
             return false;
         }
     });
-    addPossible(anim::CompoundStateType::Rising, [&](AnimState& state)->bool {
-        if (state.getOwner().isSpaceKeyPressed() && state.getOwner().core->body->grounded)
-        {
+    addPossible(anim::CompoundStateType::Launching, [&](AnimState& state)->bool {
+
+        bool facingRight = state.getOwner().core->animator->getMachine().getFacingRight();
+
+        if (state.getOwner().core->body->grounded && state.getOwner().core->animator->getCurrAnimName() == ((facingRight) ? "Idle_Right" : "Idle_Left"))
+        { 
             state.getOwner().core->body->grounded = false;
             return true;
         }

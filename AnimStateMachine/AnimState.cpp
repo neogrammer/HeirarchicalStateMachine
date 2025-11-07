@@ -145,6 +145,8 @@ anim::CompoundStateType AnimState::buildCompoundType(anim::StateType type_, anim
 		case t::Landing: { tmp = c::Landing; break; }
 		case t::Rising: { tmp = c::Rising; break; }
 		case t::Falling: { tmp = c::Falling; break; }
+		case t::Launching: { tmp = c::Launching; break; }
+
 		default:break;
 		}
 
@@ -182,6 +184,13 @@ void AnimState::transition(anim::StateType type_, anim::StateType type2_)
 	}
 
 
+	if ((possibleStates.find(anim::CompoundStateType::Launching) != possibleStates.end()) && (type_ == anim::StateType::Launching))
+	{
+		nextState = anim::CompoundStateType::Launching;
+		readyToTransition = true;
+		if (isTransient) popOffOnCleanup = true;
+		return;
+	}
 	//  Takes precedence
 	if ((possibleStates.find(anim::CompoundStateType::Rising) != possibleStates.end()) && (type_ == anim::StateType::Rising))
 	{
@@ -202,6 +211,7 @@ void AnimState::transition(anim::StateType type_, anim::StateType type2_)
 		nextState = anim::CompoundStateType::Landing;
 		readyToTransition = true;
 		if (isTransient) popOffOnCleanup = true;
+		this->isLastInSequence = true;
 		return;
 	}
 
@@ -253,6 +263,8 @@ anim::StateType AnimState::getTypeFromCompound(anim::CompoundStateType cType)
 	case c::Landing: { return t::Landing; break; }
 	case c::Rising: { return t::Rising; break; }
 	case c::Falling: { return t::Falling; break; }
+	case c::Launching: { return t::Launching; } break;
+
 	default: { return t::None; break; }
 	}
 }

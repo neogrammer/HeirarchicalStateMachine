@@ -25,7 +25,7 @@ class AnimMachine
 
 public:
 	AnimMachine() = delete;
-	AnimMachine(Obj* owner_);
+	AnimMachine(Obj* owner_, std::unique_ptr<AnimState>& state_);
 	~AnimMachine();
 	void setFacingRight(bool cond_);
 	bool getFacingRight();

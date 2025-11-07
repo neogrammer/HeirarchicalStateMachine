@@ -4,7 +4,7 @@
 // sequences that get popped off at the end of the sequence
 // may not be needed
 #include "../AnimLambdas.h"
-
+#include "../../Animator.h"
 #include "../../Obj.h"
 
 FallingState::FallingState()
@@ -21,8 +21,14 @@ FallingState::FallingState(Obj* obj_)
 {
     addPossible(anim::CompoundStateType::Hit, lmb::wasHitCondition);
     addPossible(anim::CompoundStateType::Landing, [&](AnimState& state)->bool {
-        if (state.getOwner().core->body->landing)
+        bool facingRight = state.getOwner().core->animator->getMachine().getFacingRight();
+        if (state.getOwner().core->body->landing && state.getOwner().core->animator->getCurrAnimName() == ((facingRight) ? "Falling_Right" : "Falling_Left"))
+        {
+            state.getOwner().core->body->landing = false;
+            state.getOwner().core->body->grounded = true;
+
             return true;
+        }
         return false;
         });
 }

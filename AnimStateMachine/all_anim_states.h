@@ -1,6 +1,6 @@
 #pragma once
 #include "AnimState.h"
-
+class Animator;
 class HitState : public AnimState
 {
 public:
@@ -58,6 +58,22 @@ public:
 
 
 };
+
+class LaunchingState : public AnimState
+{
+public:
+	LaunchingState();
+	~LaunchingState() override final;
+
+	LaunchingState(Obj* obj_);
+	LaunchingState(LaunchingState&& other_) noexcept;
+	LaunchingState& operator=(LaunchingState&& other_) noexcept;
+	LaunchingState(const LaunchingState& other_) = delete;
+	LaunchingState& operator=(const LaunchingState& other_) = delete;
+
+
+};
+
 
 class RisingState : public AnimState
 {

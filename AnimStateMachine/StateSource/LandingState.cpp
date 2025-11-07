@@ -23,8 +23,11 @@ LandingState::LandingState(Obj* obj_)
    
     addPossible(anim::CompoundStateType::Running, [&](AnimState& state)->bool {
         
-        if (state.getOwner().core->body->grounded && state.getOwner().core->animator->isOnLastFrame())
+        bool facingRight = state.getOwner().core->animator->getMachine().getFacingRight();
+
+        if (state.getOwner().core->animator->getCurrAnimName() == ((facingRight) ? "Landing_Right" : "Landing_Left") && state.getOwner().core->animator->isOnLastFrame() && (state.getOwner().core->body->grounded != true))
         {
+            state.getOwner().core->body->grounded = true;
             if (state.getOwner().core->body->vel.x != 0.f)
             {
                 return true;
@@ -35,13 +38,17 @@ LandingState::LandingState(Obj* obj_)
             }
 
         }
+        return false;
         });
     addPossible(anim::CompoundStateType::Idle, [&](AnimState& state)->bool {
+        bool facingRight = state.getOwner().core->animator->getMachine().getFacingRight();
 
-        if (state.getOwner().core->body->grounded && state.getOwner().core->animator->isOnLastFrame())
+        if (state.getOwner().core->animator->getCurrAnimName() == ((facingRight) ? "Landing_Right" : "Landing_Left") && state.getOwner().core->animator->isOnLastFrame() && (state.getOwner().core->body->grounded != true))
         {
+            state.getOwner().core->body->grounded = true;
             if (state.getOwner().core->body->vel.x == 0.f)
             {
+
                 return true;
             }
             else
@@ -50,6 +57,7 @@ LandingState::LandingState(Obj* obj_)
             }
 
         }
+        return false;
         });
 }
 

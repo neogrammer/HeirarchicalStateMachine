@@ -1,6 +1,7 @@
 #include "../all_anim_states.h"
 #include "../../all_object_types.h"
 #include "../anim_machine_helpers.h"
+#include "../../Animator.h"
 #include "../../Obj.h"
 
 // never returns on its own, this is for transient state
@@ -23,8 +24,10 @@ RunningState::RunningState(Obj* obj_)
     addPossible(anim::CompoundStateType::Idle, [&](AnimState& state)->bool {
         return (std::fabsf(state.getOwner().core->body->vel.x) == 0.f);
     });
-    addPossible(anim::CompoundStateType::Rising, [&](AnimState& state)->bool {
-        if (state.getOwner().isSpaceKeyPressed() && state.getOwner().core->body->grounded)
+    addPossible(anim::CompoundStateType::Launching, [&](AnimState& state)->bool {
+        bool facingRight = state.getOwner().core->animator->getMachine().getFacingRight();
+
+        if (state.getOwner().isSpaceKeyPressed() && state.getOwner().core->body->grounded  && state.getOwner().core->animator->getCurrAnimName() == ((facingRight) ? "Running_Right" : "Running_Left"))
         {
             state.getOwner().core->body->grounded = false;
             return true;

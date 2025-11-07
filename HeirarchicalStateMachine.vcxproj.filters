@@ -114,6 +114,9 @@
     <ClCompile Include="AnimStateMachine\StateSource\RisingState.cpp">
       <Filter>Header Files\AnimStateMachine\StateSource</Filter>
     </ClCompile>
+    <ClCompile Include="AnimStateMachine\StateSource\LaunchingState.cpp">
+      <Filter>Header Files\AnimStateMachine\StateSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FSM\AnimStates.h">

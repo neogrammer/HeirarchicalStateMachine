@@ -29,8 +29,7 @@ void Player::update(float dt_)
 	if (isSpaceKeyPressed() && core->body->grounded == true)
 	{
 		// player started jump
-		 //core->body->grounded = false;
-		core->body->landing = false;
+//		core->body->grounded = false;
 		core->body->impulse({0.f, -600.f});
 	}
 
@@ -66,17 +65,24 @@ void Player::update(float dt_)
 		//	core->animator->setAnimation("Idle_Right");
 	}
 
-	
+
 	core->body->update(dt_);
 
 	// collisions can happen in caller after this before drawing
 }
+
+void Player::updateAnimations(float dt_)
+{
+
+	// in final positions for this frame, lets update to correct animation and render
+	core->animator->update(dt_);
+}
+
 void Player::render(sf::RenderWindow& wnd, float dt_)
 {
 	
 
-	// in final positions for this frame, lets update to correct animation and render
-	core->animator->update(dt_);
+
 
 	sf::Sprite sprite{ core->animator->getTexture() };
 	sprite.setTextureRect(core->animator->frame());

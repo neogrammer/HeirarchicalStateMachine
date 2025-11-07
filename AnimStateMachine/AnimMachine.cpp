@@ -19,15 +19,18 @@ std::unique_ptr<AnimState> AnimMachine::buildState(anim::CompoundStateType state
 	case c::Landing: { return std::make_unique<LandingState>(&stateStack.top()->getOwner()); } break;
 	case c::Rising: { return std::make_unique<RisingState>(&stateStack.top()->getOwner()); } break;
 	case c::Falling: { return std::make_unique<FallingState>(&stateStack.top()->getOwner()); } break;
+	case c::Launching: { return std::make_unique<LaunchingState>(&stateStack.top()->getOwner()); } break;
+
 	default: break;
 	}
 
 	return nullptr;
 }
 
-AnimMachine::AnimMachine(Obj* owner_)
+AnimMachine::AnimMachine(Obj* owner_, std::unique_ptr<AnimState>& state_)
 {
-	stateStack.push(std::make_unique<IdleState>(owner_));
+
+	stateStack.push(std::move(state_));
 }
 
 AnimMachine::~AnimMachine()
@@ -57,9 +60,14 @@ std::string AnimMachine::stateToString()
 	case c::Landing: { return "Landing"; } break;
 	case c::Rising: { return "Rising"; } break;
 	case c::Falling: { return "Falling"; } break;
-	default: break;
+	case c::Launching: { return "Launching"; } break;
+
+	default: 
+	{
+		throw std::runtime_error("No State");
 	}
-	return "Idle";
+		break;
+	};
 }
 void AnimMachine::update(float dt_)
 {
